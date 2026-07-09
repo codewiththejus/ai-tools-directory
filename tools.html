@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elegir AI — AI Tools</title>
+  <meta name="description" content="Browse and search 200+ curated AI tools across coding, image generation, video, productivity and more on Elegir AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Elegir AI</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon sun">☀</span>
+          <span class="theme-icon moon">◑</span>
+        </button>
+        <a href="tools.html" class="btn-nav">Explore Tools</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO (optional) -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge fade-up">
+        <span class="badge-dot"></span>
+        200+ AI tools indexed &amp; growing
+      </div>
+      <h1 class="hero-title fade-up delay-1">
+        Confused about<br />
+        <span class="gradient-text">AI tools?</span><br />
+        Find the right one.
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Stop drowning in options. Elegir AI curates, compares, and explains the best AI tools so you can get to work faster.
+      </p>
+      <!-- Search bar -->
+      <div class="search-wrap fade-up delay-3">
+        <div class="search-bar" id="searchBar">
+          <span class="search-icon">⌕</span>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search AI tools for coding, images, studying, productivity…"
+            autocomplete="off"
+          />
+          <button class="search-btn" id="searchBtn">Search</button>
+        </div>
+        <div class="search-suggestions" id="searchSuggestions">
+          <span>Try:</span>
+          <button class="suggestion-chip" data-q="coding">AI for coding</button>
+          <button class="suggestion-chip" data-q="image">Image generation</button>
+          <button class="suggestion-chip" data-q="student">AI for students</button>
+          <button class="suggestion-chip" data-q="video">Video AI</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTER -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-label fade-up">Browse by category</div>
+      <div class="category-chips" id="categoryChips">
+        <button class="chip active" data-category="all">All Tools</button>
+        <button class="chip" data-category="chatbot">💬 Chatbots</button>
+        <button class="chip" data-category="coding">💻 Coding AI</button>
+        <button class="chip" data-category="vibecoding">✨ Vibe Coding</button>
+        <button class="chip" data-category="image">🎨 Image Gen</button>
+        <button class="chip" data-category="video">🎬 Video AI</button>
+        <button class="chip" data-category="productivity">⚡ Productivity</button>
+        <button class="chip" data-category="research">🔬 Research AI</button>
+        <button class="chip" data-category="writing">✍️ Writing</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS GRID -->
+  <section class="tools-section" id="tools">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2 class="section-title">Featured AI Tools</h2>
+        <p class="section-desc">Hand‑picked and reviewed for quality, pricing transparency, and real‑world usefulness.</p>
+      </div>
+      <div class="tools-grid" id="toolsGrid"></div>
+      <div class="no-results hidden" id="noResults">
+        <div class="no-results-inner">
+          <span class="no-results-icon">🔍</span>
+          <h3>No tools found</h3>
+          <p>Try a different search term or category.</p>
+          <button class="btn-outline" onclick="resetSearch()">Clear search</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW TOOLS CAROUSEL -->
+  <section class="new-tools-carousel-section" id="newToolsCarousel">
+    <div class="container">
+      <h2 class="section-title">Newly Added AI Tools</h2>
+      <div class="carousel-inner" style="display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:16px 0;"></div>
+    </div>
+  </section>
+
+  <!-- MODAL FOR TOOL DETAILS -->
+  <div class="modal" id="toolModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); align-items:center; justify-content:center; z-index:200;">
+    <div class="modal-content" style="background:var(--bg-card); border-radius:var(--radius-lg); padding:24px; max-width:500px; width:90%; box-shadow:var(--shadow-card); position:relative;">
+      <button class="btn-close" onclick="closeToolModal()" style="position:absolute; top:8px; right:8px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      <div id="toolModalContent"></div>
+    </div>
+  </div>
+
+  <!-- MODAL FOR NEWS ARTICLE -->
+  <div class="modal" id="newsModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); align-items:center; justify-content:center; z-index:210;">
+    <div class="modal-content" style="background:var(--bg-card); border-radius:var(--radius-lg); padding:24px; max-width:600px; width:95%; box-shadow:var(--shadow-card); position:relative; overflow-y:auto; max-height:85vh;">
+      <button class="btn-close" onclick="closeNewsModal()" style="position:absolute; top:8px; right:8px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      <div id="newsModalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
