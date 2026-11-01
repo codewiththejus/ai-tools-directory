@@ -695,6 +695,19 @@ const tools = [
     url: "https://devin.ai",
     tags: ["coding", "agentic", "autonomous", "developer", "ai-agent", "enterprise", "cognition"]
   },
+  {
+    id: 52,
+    name: "agent-qa",
+    emoji: "🧪",
+    category: "coding",
+    description: "Web, Android and iOS QA through CLI/MCP, with advanced memidex memory and evidence-gated self-improvement.",
+    pricing: "Free CLI (FSL-1.1-ALv2); model costs extra",
+    plan: "free",
+    credits: "Requires Node.js 24+ and your own model access.",
+    bestFor: "Developers and QA teams verifying UI changes",
+    url: "https://vostride.com",
+    tags: ["testing", "qa", "automation", "coding", "mcp", "memory", "self-improvement"]
+  },
 ];
 
 // ============================================
